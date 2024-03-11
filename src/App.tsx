@@ -20,7 +20,6 @@ import {
   SkeletonCircle, AvatarBadge, Flex, Stack, useColorModeValue, Slide, ControlBox, Heading, useColorMode,
 } from "@chakra-ui/react";
 
-import { motion } from "framer-motion";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -30,10 +29,8 @@ import "./style.css";
 import { FaPaypal, FaEnvelope, FaServer } from "react-icons/fa";
 import {IconContext} from "react-icons";
 import {Simulate} from "react-dom/test-utils";
-import play = Simulate.play;
 import {stat} from "fs";
 import { hot } from "react-hot-loader/root";
-import {LayoutGroup} from "framer-motion";
 
 const App: React.FC = () => {
 
@@ -182,7 +179,7 @@ const App: React.FC = () => {
           </Box>
         </Card>
 
-        <motion.div
+        <Box
             className={`hero h-screen transition-all duration-200 ease-in-out transform z-10`}
             style={{
               transition: 'background-color 0.5s ease',
@@ -272,7 +269,7 @@ const App: React.FC = () => {
               </Box>
             </SlideFade>
           </Box>
-        </motion.div>
+        </Box>
 
       </ChakraProvider>
   );
