@@ -1,1 +1,1 @@
-My personal website built with React JS
+My personal website built with React TS
