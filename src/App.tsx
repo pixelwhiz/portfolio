@@ -17,8 +17,10 @@ import {
   Skeleton,
   border,
   background,
-  SkeletonCircle, AvatarBadge, Flex, Stack, useColorModeValue, Slide, ControlBox, Heading,
+  SkeletonCircle, AvatarBadge, Flex, Stack, useColorModeValue, Slide, ControlBox, Heading, useColorMode,
 } from "@chakra-ui/react";
+
+import { motion } from "framer-motion";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -36,6 +38,7 @@ import {LayoutGroup} from "framer-motion";
 const App: React.FC = () => {
 
   const { isOpen, onToggle } = useDisclosure()
+  const [activity, setActivity] = useState('');
   const [playing_status, setPlayingStatus] = useState('');
   const [status_color, setStatusColor] = useState('');
   const [status, setStatus] = useState('');
@@ -72,6 +75,14 @@ const App: React.FC = () => {
         setStatus("Online");
       }
 
+      const status = response.data.data.activities[0].name;
+
+      if (status === "Spotify") {
+        setActivity("Listening to");
+      } else {
+        setActivity("Playing");
+      }
+
       setPlayingStatus(response.data.data.activities[0].name);
     } catch (err) {
       console.log("Internal Server Error: ", err);
@@ -95,7 +106,7 @@ const App: React.FC = () => {
       console.log("Internal Server Error: ", err);
     } finally {
     }
-  }
+  };
 
   useEffect(() => {
     fetchLanyard();
@@ -171,7 +182,12 @@ const App: React.FC = () => {
           </Box>
         </Card>
 
-        <Box backgroundColor={""} className={`hero h-screen z-10`}>
+        <motion.div
+            className={`hero h-screen transition-all duration-200 ease-in-out transform z-10`}
+            style={{
+              transition: 'background-color 0.5s ease',
+            }}
+        >
           <Box className={`w-full justify-center flex fixed top-0 md:top-5 transition-all duration-200 ease-in-out transform ${isMenuOpen ? "lg:left-64 xl:left-36 sm:left-72 left-64" : "left-0"}`}>
             <SlideFade
                 in={isOpen}
@@ -219,7 +235,7 @@ const App: React.FC = () => {
                       ) : (
                           <label>
                             {playing_status ? (
-                                <span className={"flex-wrap font-medium text-wrap"}>Playing <span className={"me-0.5 font-semibold"}>{playing_status}</span> <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" className="inline-flex -mt-0.5"><path d="M6,7 L2,7 L2,6 L6,6 L6,7 Z M8,5 L2,5 L2,4 L8,4 L8,5 Z M8,3 L2,3 L2,2 L8,2 L8,3 Z M8.88888889,0 L1.11111111,0 C0.494444444,0 0,0.494444444 0,1.11111111 L0,8.88888889 C0,9.50253861 0.497461389,10 1.11111111,10 L8.88888889,10 C9.50253861,10 10,9.50253861 10,8.88888889 L10,1.11111111 C10,0.494444444 9.5,0 8.88888889,0 Z" transform="translate(0 3)"></path></svg></span>
+                                <span className={"flex-wrap font-medium text-wrap"}>{activity} <span className={"me-0.5 font-semibold"}>{playing_status}</span> <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" className="inline-flex -mt-0.5"><path d="M6,7 L2,7 L2,6 L6,6 L6,7 Z M8,5 L2,5 L2,4 L8,4 L8,5 Z M8,3 L2,3 L2,2 L8,2 L8,3 Z M8.88888889,0 L1.11111111,0 C0.494444444,0 0,0.494444444 0,1.11111111 L0,8.88888889 C0,9.50253861 0.497461389,10 1.11111111,10 L8.88888889,10 C9.50253861,10 10,9.50253861 10,8.88888889 L10,1.11111111 C10,0.494444444 9.5,0 8.88888889,0 Z" transform="translate(0 3)"></path></svg></span>
                             ) : (
                                 <span className={"flex-wrap font-medium text-wrap"}>{status}</span>
                             )}
@@ -256,7 +272,7 @@ const App: React.FC = () => {
               </Box>
             </SlideFade>
           </Box>
-        </Box>
+        </motion.div>
 
       </ChakraProvider>
   );
