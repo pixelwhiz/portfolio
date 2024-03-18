@@ -180,12 +180,12 @@ const App: React.FC = () => {
         </Card>
 
         <Box
-            className={`hero h-screen transition-all duration-200 ease-in-out transform z-10`}
+            className={`hero h-screen overflow-x-hidden transition-all duration-200 ease-in-out transform z-10`}
             style={{
               transition: 'background-color 0.5s ease',
             }}
         >
-          <Box className={`w-full justify-center flex fixed top-0 md:top-5 transition-all duration-200 ease-in-out transform ${isMenuOpen ? "lg:ps-64 xl:ps-36 sm:ps-72 ps-64" : "ps-0"}`}>
+          <Box className={`w-full justify-center flex fixed top-0 md:top-5 transition-all duration-200 ease-in-out transform ${isMenuOpen ? "lg:left-64 xl:left-36 sm:left-72 left-64" : "left-0"}`}>
             <SlideFade
                 in={isOpen}
                 offsetY={"1rem"}
