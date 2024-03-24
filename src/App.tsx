@@ -48,6 +48,7 @@ const App: React.FC = () => {
   const [isFetchingLastCommit, setIsFetchingLastCommit] = useState(false);
 
   const fetchLanyard = async () => {
+
     try {
       setIsFetchingLanyard(true);
       const response = await axios.get("https://api.lanyard.rest/v1/users/591983759965028363");
@@ -84,7 +85,9 @@ const App: React.FC = () => {
     } catch (err) {
       console.log("Internal Server Error: ", err);
     } finally {
-      setIsFetchingLanyard(false);
+      setTimeout(() => {
+        setIsFetchingLanyard(false);
+      }, 2500);
     }
   };
   
@@ -215,7 +218,7 @@ const App: React.FC = () => {
                           <Card position={"absolute"} boxShadow={"none"} backgroundColor={"teal.300"} rounded={"full"} className={"h-7 w-7 ms-16 mt-16 absolute z-10 rounded-2xl"} >
                             <SkeletonCircle data-tip={"Loading..."} width={"1.4rem"} height={"1.4rem"} alignItems={"center"} rounded={"full"} className={"mt-[0.28rem] tooltip ms-[0.3rem]"} />
                           </Card>
-                          // <AvatarBad ge className={"tooltip skeleton text z-10"} m={"0.25rem"} cursor={"pointer"} data-tip={"Loading"} textTransform={"none"} borderWidth={"0.4rem"} borderColor={"green.500"} boxSize='2rem' bg='gray.500' />
+                          // <AvatarBadge className={"tooltip skeleton text z-10"} m={"0.25rem"} cursor={"pointer"} data-tip={"Loading"} textTransform={"none"} borderWidth={"0.4rem"} borderColor={"green.500"} boxSize='2rem' bg='gray.500' />
                       ) : (
                           <Card position={"absolute"} boxShadow={"none"} backgroundColor={"teal.300"} rounded={"full"} className={"h-7 w-7 ms-16 mt-16 absolute z-10 rounded-2xl"} >
                             <Card boxShadow={"none"} cursor={"pointer"} backgroundColor={`${status_color}`} data-tip={`${status}`} width={"1.4rem"} height={"1.4rem"} alignItems={"center"} rounded={"full"} className={"mt-[0.28rem] ms-[0.3rem] text tooltip normal-case"} />
