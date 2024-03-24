@@ -167,7 +167,7 @@ const App: React.FC = () => {
       <ChakraProvider>
         <Card zIndex={"100"} roundedTopEnd={"1rem"} roundedBottomEnd={"1rem"} rounded={"0"} backgroundColor={""} position={"fixed"} className={`bg-base-content/5 h-full w-64 fixed transition-all duration-200 ease-in-out transform ${isMenuOpen ? 'left-0' : '-left-64'}`}>
           <Box className="grid gap-2.5 text-base-100 py-2.5 ps-2.5">
-            <button onClick={routeToProjects} className={"p-3 text-base-content rounded-s-2xl bg-base-300 font-medium flex ps-5 gap-5 text hover:text-accent"}>
+            <button onClick={routeToProjects} className={"p-3 text-accent rounded-s-2xl bg-base-300 font-medium flex ps-5 gap-5 text"}>
               <FaServer className={"h-6 w-6"} />
               Projects
             </button>
