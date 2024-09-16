@@ -23,7 +23,7 @@ import {
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import {FaGithub, MdLabel, MdMenu} from "react-icons/all";
+import {FaGithub, FaLinkedin, MdLabel, MdMenu} from "react-icons/all";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
 import "./style.css";
 import { FaPaypal, FaEnvelope, FaServer } from "react-icons/fa";
@@ -130,6 +130,10 @@ const App: React.FC = () => {
     window.location.href = 'https://www.paypal.com/paypalme/mdafftfa';
   };
 
+  const routeToLinkedIn = () => {
+    window.location.href = 'https://www.linkedin.com/in/daffaxcl';
+  };
+
   const toggleSidebar = () => {
 
   };
@@ -166,29 +170,43 @@ const App: React.FC = () => {
   return (
       <ChakraProvider>
         <Card zIndex={"100"} roundedTopEnd={"1rem"} roundedBottomEnd={"1rem"} rounded={"0"} backgroundColor={""} position={"fixed"} className={`bg-base-content/5 h-full w-64 fixed transition-all duration-200 ease-in-out transform ${isMenuOpen ? 'left-0' : '-left-64'}`}>
-          <Box className="grid gap-2.5 text-base-100 py-2.5 ps-2.5">
-            <button onClick={routeToProjects} className={"p-3 text-accent rounded-s-2xl bg-base-300 font-medium flex ps-5 gap-5 text"}>
-              <FaServer className={"h-6 w-6"} />
+          <Box className={"mt-5 mx-5 text-start"}>
+            <Text className={"font-[700] text-teal-500 text-2xl"}>Menu</Text>
+          </Box>
+          <Box className="grid gap-2.5 text-base-100 py-2.5 px-2.5">
+            <button onClick={routeToProjects}
+                    className={"p-3 text-base-content rounded-s-2xl rounded-e-2xl font-medium  flex ps-5 gap-5 text hover:bg-base-100 hover:text-teal-500 hover:border-e-4 border-0 border-base-100 border"}>
+              <FaServer className={"h-6 w-6"}/>
               Projects
             </button>
-            <button onClick={routeToContact} className={"p-3 text-base-content rounded-s-2xl font-medium hover:brightness-200 flex ps-5 gap-5 text hover:bg-base-100 hover:text-base-content hover:border-e-4 border-0 border-base-100 border"}>
-              <FaEnvelope className={"h-6 w-6"} />
+            <button onClick={routeToLinkedIn}
+                    className={"p-3 text-base-content rounded-s-2xl rounded-e-2xl font-medium  flex ps-5 gap-5 text hover:bg-base-100 hover:text-teal-500 hover:border-e-4 border-0 border-base-100 border"}>
+              <FaLinkedin className={"h-6 w-6"}/>
+              Linked In
+            </button>
+            <button onClick={routeToContact}
+                    className={"p-3 text-base-content rounded-s-2xl rounded-e-2xl font-medium  flex ps-5 gap-5 text hover:bg-base-100 hover:text-teal-500 hover:border-e-4 border-0 border-base-100 border"}>
+              <FaEnvelope className={"h-6 w-6"}/>
               Contact Me
             </button>
-            <button onClick={routeToDonate} className={"p-3 text-base-content rounded-s-2xl font-medium hover:brightness-200 flex ps-5 gap-5 text hover:bg-base-100 hover:text-base-content hover:border-e-4 border-0 border-base-100 border"}>
-              <FaPaypal className={"h-7 w-7"} />
+            <button onClick={routeToDonate}
+                    className={"p-3 text-base-content rounded-s-2xl rounded-e-2xl font-medium  flex ps-5 gap-5 text hover:bg-base-100 hover:text-teal-500 hover:border-e-4 border-0 border-base-100 border"}>
+              <FaPaypal className={"h-7 w-7"}/>
               Donate
             </button>
           </Box>
         </Card>
 
         <Box
-            className={`hero h-screen overflow-x-hidden transition-all duration-200 ease-in-out transform z-10`}
+            className={`h-screen grid overflow-x-hidden transition-all duration-200 ease-in-out transform z-10`}
             style={{
               transition: 'background-color 0.5s ease',
             }}
         >
-          <Box className={`w-full justify-center flex fixed top-0 md:top-5 transition-all duration-200 ease-in-out transform ${isMenuOpen ? "lg:left-64 xl:left-36 sm:left-72 left-64" : "left-0"}`}>
+          <Box className={`w-full justify-center flex top-0 md:top-5 fixed transition-all duration-200 ease-in-out transform ${isMenuOpen ? "lg:left-64 xl:left-36 sm:left-72 left-64" : "left-0"}`}
+            style={{
+            placeItems: 'center',
+          }}>
             <SlideFade
                 in={isOpen}
                 offsetY={"1rem"}
@@ -247,8 +265,8 @@ const App: React.FC = () => {
               </Box>
 
               {/* Main Cards */}
-              <Box className="grid md:flex gap-5" style={{ overflowX: 'hidden' }}>
-                <Box rounded={"1rem"} className="shadow-sm bg-base-content/5 w-full p-4 lg:p-5 md:h-[20rem] border-base-content/25 ">
+              <Box className="grid md:flex md:h-[20rem] gap-5" style={{ overflowX: 'hidden' }}>
+                <Box rounded={"1rem"} className="shadow-sm bg-base-content/5 w-full p-4 lg:p-5 border-base-content/25 ">
                   <Text className="text-3xl mb-2.5 text font-bold">Hello there!</Text>
                   <Box className={"grid gap-5"}>
                     <span className="font-normal brightness-150 text text-base-content">I'm a programmer who loves to code and learn
@@ -259,7 +277,7 @@ const App: React.FC = () => {
                       osu!, or building incredible structures in Minecraft.</label>
                   </Box>
                 </Box>
-                <Box rounded={"1rem"} backgroundColor={""} className="shadow-sm justify-center md:w-96 p-4 lg:p-5 md:h-[20rem] bg-base-content/5">
+                <Box rounded={"1rem"} backgroundColor={""} className="shadow-sm justify-center md:w-96 p-4 lg:p-5 bg-base-content/5">
                   <Box className={"grid md:mt-14 gap-2.5"}>
                     <label className="text-3xl text font-bold">Latest Project</label>
                     {isFetchingLanyard ? (
